@@ -104,11 +104,6 @@ public static class Program
                 throw new InvalidOperationException("PostgreSql connection string is not configured");
             builder.Services.AddDbContext<PostgreDbContext>(options =>
                 options.UseNpgsql(connectionString));
-            
-            // builder.Services.AddDbContext<PostgreDbContext>(options =>
-            //     options.UseNpgsql(
-            //         "Host=localhost;Port=5432;Database=StreamingServiceDb;Username=postgres;Password=lokomotiv960; Include Error Detail=true",
-            //         b => b.MigrationsAssembly("Application"))); //для миграций не забыть удалить в конце
 
             builder.Services.AddScoped(typeof(IRepository<>), typeof(PostgreRepository<>));
             builder.Services.AddScoped<IUserRepository, UserRepository>();
